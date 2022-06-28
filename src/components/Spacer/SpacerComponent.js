@@ -1,5 +1,6 @@
+import React from "react";
 import { View } from "react-native";
-import styled from "styled-components/native";
+import styled, { useTheme } from "styled-components/native";
 
 const sizesVariant = {
   small: 1,
@@ -21,9 +22,14 @@ const getVariant = (theme, position, size) => {
   return `${property}: ${value}`;
 };
 
-export const Spacer = styled(View)`
-  ${({ theme, position, size }) => getVariant(theme, position, size)}
+const SpacerView = styled(View)`
+  ${({ variant }) => variant}
 `;
+export const Spacer = ({ position, size, children }) => {
+  const theme = useTheme();
+  const variant = getVariant(theme, position, size);
+  return <SpacerView variant={variant}>{children}</SpacerView>;
+};
 
 Spacer.defaultProps = {
   position: "top",
