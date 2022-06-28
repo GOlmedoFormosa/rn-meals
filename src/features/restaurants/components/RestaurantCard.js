@@ -1,9 +1,13 @@
 import React from "react";
 import { Card as RNPaperCard } from "react-native-paper";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import styled from "styled-components";
 import { SvgXml } from "react-native-svg";
+
+import { Spacer } from "../../../components/Spacer/SpacerComponent";
+
 import star from "../../../../assets/star";
+import open from "../../../../assets/open";
 
 const Card = styled(RNPaperCard)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -24,6 +28,17 @@ const Title = styled(Text)`
   color: ${(props) => props.theme.colors.ui.primary};
 `;
 
+const Section = styled(View)`
+  align-items: center;
+  flex-direction: row;
+`;
+
+const SectionEnd = styled(View)`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
 const Rating = styled(View)`
   flex-direction: row;
   padding-top: ${(props) => props.theme.space[2]};
@@ -39,14 +54,14 @@ const Address = styled(Text)`
 export const RestaurantCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
-    // icon,
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
-      "https://i.pinimg.com/originals/e3/2d/67/e32d67b771afab60e846a71dbab5b44c.jpg",
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
     ],
     address = "100 some random street",
-    // isOpenNow = true,
+    isOpenNow = true,
     rating = 4,
-    // isClosedTemprarily,
+    isClosedTemprarily = true,
   } = restaurant;
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
@@ -54,11 +69,26 @@ export const RestaurantCard = ({ restaurant = {} }) => {
       <CardCover key={name} source={{ uri: photos ? photos[0] : "" }} />
       <Info>
         <Title>{name}</Title>
-        <Rating>
-          {ratingArray.map(() => (
-            <SvgXml xml={star} width={20} height={20} />
-          ))}
-        </Rating>
+        <Section>
+          <Rating>
+            {ratingArray.map(() => (
+              <SvgXml xml={star} width={20} height={20} />
+            ))}
+          </Rating>
+          <SectionEnd>
+            {isClosedTemprarily && (
+              <Text variant="label" style={{ color: "red" }}>
+                CLOSED TEMPORARLY
+              </Text>
+            )}
+            <Spacer position="left" size="large">
+              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            </Spacer>
+          </SectionEnd>
+        </Section>
         <Address>{address}</Address>
       </Info>
     </Card>
