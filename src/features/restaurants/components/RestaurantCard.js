@@ -16,7 +16,7 @@ import {
   SectionEnd,
   Icon,
   Address,
-} from "./restaurantCard.styles";
+} from "./RestaurantCard.styles";
 
 export const RestaurantCard = ({ restaurant = {} }) => {
   const {
