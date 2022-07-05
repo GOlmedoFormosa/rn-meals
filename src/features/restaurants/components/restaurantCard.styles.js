@@ -1,3 +1,7 @@
+import { Card as RNPaperCard } from "react-native-paper";
+import { View, Image } from "react-native";
+import styled from "styled-components";
+
 export const Card = styled(RNPaperCard)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
@@ -6,10 +10,6 @@ export const CardCover = styled(RNPaperCard.Cover)`
   background-color: ${(props) => props.theme.colors.bg.primary};
   padding: ${(props) => props.theme.space[3]};
 `;
-
-import { Card as RNPaperCard } from "react-native-paper";
-import { View, Image } from "react-native";
-import styled from "styled-components";
 
 export const Info = styled(View)`
   padding: ${(props) => props.theme.space[3]};
