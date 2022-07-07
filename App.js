@@ -8,15 +8,33 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+
 import { RestaurantsScreen } from "./src/features/restaurants/screens/RestaurantsScreen";
 import { theme } from "./src/infraestructure/theme";
 
 const Tab = createBottomTabNavigator();
 const SettingsScreen = () => <></>;
 const MapScreen = () => <></>;
+
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
+
+const screenOptions = ({ route }) => {
+  return {
+    tabBarIcon: ({ size, color }) => {
+      return <Ionicons name={TAB_ICON[route.name]} size={size} color={color} />;
+    },
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+  };
+};
 const MyTabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
