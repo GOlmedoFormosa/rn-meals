@@ -19,6 +19,7 @@ export const restaurantsFormat = ({ results = [] }) => {
     photos: restaurant.photos.map(() => {
       return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
     }),
+    address: restaurant.vicinity,
   }));
   return camelize(mappedResult);
 };

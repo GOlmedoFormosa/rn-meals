@@ -21,7 +21,6 @@ const LoaderContainer = styled(View)`
   position: absolute;
   top: 50%;
   left: 50%;
-  zindex: 10;
 `;
 
 const Loader = styled(ActivityIndicator)`
