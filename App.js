@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/RestaurantsScreen";
 import { theme } from "./src/infraestructure/theme";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurantsContext";
 
 const Tab = createBottomTabNavigator();
 const SettingsScreen = () => <></>;
@@ -57,9 +58,11 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <MyTabs />
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

@@ -1,5 +1,5 @@
 import camelize from "camelize";
-import { mocks } from "./mock";
+import { mocks, mockImages } from "./mock";
 
 export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
   return new Promise((resolve, reject) => {
@@ -7,16 +7,18 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
     if (!mock) {
       reject("not found");
     }
-    const formated = restaurantsFormat(mock);
-    resolve(formated);
+    resolve(mock);
   });
 };
 
-function restaurantsFormat({ results = [] }) {
+export const restaurantsFormat = ({ results = [] }) => {
   const mappedResult = results.map((restaurant) => ({
     ...restaurant,
     isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
     isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+    photos: restaurant.photos.map(() => {
+      return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
+    }),
   }));
   return camelize(mappedResult);
-}
+};
