@@ -6,7 +6,7 @@ export const locationRequest = (searchTerm) => {
   return new Promise((resolve, reject) => {
     const locationResult = locations[searchTerm];
     if (!locationResult) {
-      reject("not found");
+      reject("location not found");
     }
     resolve(locationResult);
   });
