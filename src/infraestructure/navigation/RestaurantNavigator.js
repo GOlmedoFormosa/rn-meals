@@ -1,21 +1,32 @@
 import "react-native-gesture-handler";
 
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
 
 import { RestaurantsScreen } from "../../features/restaurants/screens/RestaurantsScreen";
+import { RestaurantDetailsScreen } from "../../features/restaurants/screens/RestaurantDetailsScreen";
 
 const RestaurantStack = createStackNavigator();
-const TestScreen = () => <></>;
 
 export const RestaurantNavigator = () => {
   return (
-    <RestaurantStack.Navigator headerMode="none">
+    <RestaurantStack.Navigator
+      headerMode="none"
+      screenOptions={{
+        ...TransitionPresets.ModalPresentationIOS,
+      }}
+    >
       <RestaurantStack.Screen
         name="RestaurantsList"
         component={RestaurantsScreen}
       />
-      <RestaurantStack.Screen name="Deatils" component={TestScreen} />
+      <RestaurantStack.Screen
+        name="RestaurantDeatils"
+        component={RestaurantDetailsScreen}
+      />
     </RestaurantStack.Navigator>
   );
 };
