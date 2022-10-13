@@ -13,6 +13,7 @@ import { Search } from "../components/Search";
 
 // services
 import { RestaurantsContext } from "../../../services/restaurants/restaurantsContext";
+import { FavouritesContext } from "../../../services/favourites/favouritesContext";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -32,6 +33,7 @@ const Loader = styled(ActivityIndicator)`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
   return (
     <Container>
       {isLoading && (
