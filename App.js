@@ -16,14 +16,23 @@ import { FavouritesContextProvider } from "./src/services/favourites/favouritesC
 import { AuthenticationContextProvider } from "./src/services/authentication/authenticationContext";
 import { Navigator } from "./src/infraestructure/navigation";
 
+// const firebaseConfig = {
+//   apiKey: "api-key",
+//   authDomain: "project-id.firebaseapp.com",
+//   databaseURL: "https://project-id.firebaseio.com",
+//   projectId: "project-id",
+//   storageBucket: "project-id.appspot.com",
+//   messagingSenderId: "sender-id",
+//   appId: "app-id",
+// };
+
 const firebaseConfig = {
-  apiKey: "api-key",
-  authDomain: "project-id.firebaseapp.com",
-  databaseURL: "https://project-id.firebaseio.com",
-  projectId: "project-id",
-  storageBucket: "project-id.appspot.com",
-  messagingSenderId: "sender-id",
-  appId: "app-id",
+  apiKey: "AIzaSyCAiICZ64wpPY1OCBM76ryD9mqMD2cuVQI",
+  authDomain: "gao-restaurant-self-service.firebaseapp.com",
+  projectId: "gao-restaurant-self-service",
+  storageBucket: "gao-restaurant-self-service.appspot.com",
+  messagingSenderId: "1006499699291",
+  appId: "1:1006499699291:web:9176dd02fd5f2b4b92fd7e",
 };
 
 if (!firebase.apps.length) {
