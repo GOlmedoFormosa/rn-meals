@@ -37,7 +37,6 @@ export const LoginScreen = ({ navigation }) => {
           textContentType="password"
           autoCapitalize="none"
           secureTextEntry // hide text
-          secure
           onChangeText={(text) => setPassword(text)}
         />
         {error && (
@@ -63,4 +62,3 @@ export const LoginScreen = ({ navigation }) => {
     </AccountBackground>
   );
 };
-AuthInput;
