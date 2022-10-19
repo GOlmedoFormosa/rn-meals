@@ -10,9 +10,6 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
 import { theme } from "./src/infraestructure/theme";
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurantsContext";
-import { LocationContextProvider } from "./src/services/location/locationContext";
-import { FavouritesContextProvider } from "./src/services/favourites/favouritesContext";
 import { AuthenticationContextProvider } from "./src/services/authentication/authenticationContext";
 import { Navigator } from "./src/infraestructure/navigation";
 
@@ -55,13 +52,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <FavouritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigator />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavouritesContextProvider>
+          <Navigator />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

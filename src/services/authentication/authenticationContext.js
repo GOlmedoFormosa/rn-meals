@@ -18,7 +18,6 @@ export const AuthenticationContextProvider = ({ children }) => {
     if (usr) {
       setUser(usr);
     }
-    setIsLoading(false);
   });
 
   const onLogin = (email, password) => {

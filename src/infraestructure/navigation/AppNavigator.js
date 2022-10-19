@@ -2,6 +2,10 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
+import { RestaurantsContextProvider } from "../../services/restaurants/restaurantsContext";
+import { LocationContextProvider } from "../../services/location/locationContext";
+import { FavouritesContextProvider } from "../../services/favourites/favouritesContext";
+
 import { RestaurantNavigator } from "./RestaurantNavigator";
 import { MapScreen } from "../../features/map/screens/MapScreen";
 import { SettingsScreen } from "../../features/settings/screens/SettingsScreen";
@@ -26,10 +30,16 @@ const screenOptions = ({ route }) => {
 
 export const AppNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name="Restaurants" component={RestaurantNavigator} />
-      <Tab.Screen name="Map" component={MapScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
+    <FavouritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <Tab.Navigator screenOptions={screenOptions}>
+            <Tab.Screen name="Restaurants" component={RestaurantNavigator} />
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
+    </FavouritesContextProvider>
   );
 };
