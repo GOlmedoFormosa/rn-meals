@@ -16,7 +16,9 @@ export const FavouritesContextProvider = ({ children }) => {
       (x) => x.placeId !== restaurant.placeId
     );
     setFavourites(newFavourites);
-    storeFavourites(newFavourites, user.uid);
+    if (!newFavourites.length) {
+      storeFavourites(newFavourites, user.uid);
+    }
   };
 
   const storeFavourites = async (value, uid) => {
