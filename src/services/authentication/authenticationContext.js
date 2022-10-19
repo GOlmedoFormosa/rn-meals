@@ -1,6 +1,11 @@
 import React, { useState, createContext } from "react";
 
-import { loginRequest, registerRequest } from "./authenticationService";
+import {
+  loginRequest,
+  registerRequest,
+  checkAuthStateChanges,
+  logoutRequest,
+} from "./authenticationService";
 
 export const AuthenticationContext = createContext();
 
@@ -8,6 +13,14 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
+  checkAuthStateChanges((usr) => {
+    if (usr) {
+      setUser(usr);
+    }
+    setIsLoading(false);
+  });
+
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(email, password)
@@ -37,6 +50,12 @@ export const AuthenticationContextProvider = ({ children }) => {
         setIsLoading(false);
       });
   };
+
+  const onLogout = async () => {
+    await logoutRequest();
+    setUser(null);
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -46,6 +65,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}

@@ -4,8 +4,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { RestaurantNavigator } from "./RestaurantNavigator";
 import { MapScreen } from "../../features/map/screens/MapScreen";
+import { SettingsScreen } from "../../features/settings/screens/SettingsScreen";
+
 const Tab = createBottomTabNavigator();
-const SettingsScreen = () => <></>;
 
 const TAB_ICON = {
   Restaurants: "md-restaurant",
