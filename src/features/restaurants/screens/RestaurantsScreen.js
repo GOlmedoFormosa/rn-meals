@@ -11,6 +11,8 @@ import { RestaurantCard } from "../components/RestaurantCard";
 // common components
 import { Container } from "../../../components/Container/ContainerComponent";
 import { Spacer } from "../../../components/Spacer/SpacerComponent";
+// animations
+import { FadeInView } from "../../../components/Animations/FadeAnimation";
 
 // shared components
 import { RestaurantList } from "../../shared/components/RestaurantList";
@@ -54,6 +56,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           }
         />
       )}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => (
@@ -65,7 +68,9 @@ export const RestaurantsScreen = ({ navigation }) => {
             }
           >
             <Spacer position="bottom" size="large">
-              <RestaurantCard restaurant={item} />
+              <FadeInView>
+                <RestaurantCard restaurant={item} />
+              </FadeInView>
             </Spacer>
           </TouchableOpacity>
         )}
