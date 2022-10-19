@@ -3,24 +3,21 @@ import { View, FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components";
 
-// common components
-import { Container } from "../../../components/Container/ContainerComponent";
-import { Spacer } from "../../../components/Spacer/SpacerComponent";
-
 // restaurant components
 import { Search } from "../components/Search";
 import { FavouritesBar } from "../components/FavouritesBar";
 import { RestaurantCard } from "../components/RestaurantCard";
 
+// common components
+import { Container } from "../../../components/Container/ContainerComponent";
+import { Spacer } from "../../../components/Spacer/SpacerComponent";
+
+// shared components
+import { RestaurantList } from "../../shared/components/RestaurantList";
+
 // services
 import { RestaurantsContext } from "../../../services/restaurants/restaurantsContext";
 import { FavouritesContext } from "../../../services/favourites/favouritesContext";
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const LoaderContainer = styled(View)`
   position: absolute;
