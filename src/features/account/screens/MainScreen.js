@@ -7,11 +7,13 @@ import {
   AccountCover,
   AccountContainer,
   AuthButton,
+  Title,
 } from "./Account.styles";
 
 export const MainScreen = ({ navigation }) => (
   <AccountBackground>
     <AccountCover />
+    <Title>Meals</Title>
     <AccountContainer>
       <AuthButton
         title="Login"
